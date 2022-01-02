@@ -417,11 +417,11 @@ const styles = StyleSheet.create({
         shadowColor: "#171717",
         shadowRadius: 10,
         shadowOffset: {
-            width: 10,
-            height: 10
+            width: 5,
+            height: 5
         },
         shadowOpacity: 1,
-        elevation: 20
+        elevation: 5
     },
     buttonText: {
         fontSize: 20,
@@ -442,7 +442,7 @@ const styles = StyleSheet.create({
         marginTop: 32,
         flexDirection: "row",
         justifyContent: "space-between",
-        marginHorizontal: 102
+        marginHorizontal: 80
     },
     bubble: {
         height: 50,
@@ -466,6 +466,6 @@ const styles = StyleSheet.create({
     regBubbles: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginRight: 190
+        marginRight: 150
     }
   });
