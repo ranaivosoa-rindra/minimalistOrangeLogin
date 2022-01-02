@@ -19,7 +19,7 @@ export default function Main(){
 
         return(
         <View>
-            <View style = {styles.twoInputs}>
+            <View style = {styles.inputsContainer}>
                 <View style = {styles.inputsView}>
                     <Icon
                         name = "envelope"
@@ -28,13 +28,16 @@ export default function Main(){
                         color = {"#fff"}
                         style = {{paddingTop: 10}}
                     />
-                    <TextInput
-                        placeholder='Email'
-                        placeholderTextColor={"#EFCDC6"}
-                        textContentType='emailAddress'
-                        autoCapitalize={'none'}
-                        style = {styles.tInput}
-                    />
+                    <View style = {styles.singleInput}>
+                        <TextInput
+                            placeholder='Email'
+                            placeholderTextColor={"#EFCDC6"}
+                            textContentType='emailAddress'
+                            keyboardType='email-address'
+                            autoCapitalize={'none'}
+                            style = {styles.tInput}
+                        />
+                    </View>
                 </View>
                 <View style = {styles.line}></View>
                 <View style = {[styles.inputsView, {marginTop: 15}]}>
@@ -45,14 +48,16 @@ export default function Main(){
                         color = {"#fff"}
                         style = {{paddingTop: 10}}
                     />
-                    <TextInput
-                        placeholder='Password'
-                        placeholderTextColor={"#EFCDC6"}
-                        secureTextEntry = {loginPassword}
-                        textContentType='password'
-                        autoCapitalize={'none'}
-                        style = {styles.tInput}
-                    />
+                    <View style = {styles.singleInput}>
+                        <TextInput
+                            placeholder='Password'
+                            placeholderTextColor={"#EFCDC6"}
+                            secureTextEntry = {loginPassword}
+                            textContentType='password'
+                            autoCapitalize={'none'}
+                            style = {styles.tInput}
+                        />                        
+                    </View>
                     <TouchableOpacity
                         onPress={() => {setLoginPassword(!loginPassword)}}
                         style = {{position: "absolute", right:0}}
@@ -68,12 +73,12 @@ export default function Main(){
                 </View>
                 <View style = {styles.line}></View>
             </View>
-            <View style = {styles.loginButtonView}>
+            <View style = {styles.buttonView}>
                 <TouchableOpacity
-                    style = {styles.loginButton}
+                    style = {styles.button}
                     onPress={() => {console.log("Login button pressed")}}
                 >
-                    <Text style = {styles.loginButtonText}>
+                    <Text style = {styles.buttonText}>
                         Login
                     </Text>
                 </TouchableOpacity>
@@ -126,6 +131,157 @@ export default function Main(){
         );
     }
 
+    function Register(){
+        const [registerPassword, setRegisterPassword] = useState(true)
+        return(
+            <View style = {styles.reg}>
+                {/* <Text>
+                    Hello Register
+                </Text> */}
+                <View style = {styles.inputsContainer}>
+                    <View style = {styles.inputsView}>
+                        <Icon
+                            name = "user"
+                            type = 'font-awesome'
+                            size = {25}
+                            color = {"#fff"}
+                            style = {{paddingTop: 10}}
+                        />
+                        <View style = {styles.singleInput}>
+                            <TextInput
+                                placeholder='Full Name'
+                                keyboardType='default'
+                                placeholderTextColor={"#EFCDC6"}
+                                style = {styles.tInput}
+                            />
+                        </View>
+                    </View>
+                    <View style = {styles.line}></View>
+                    <View style = {[styles.inputsView, {marginTop: 10}]}>
+                        <Icon
+                            name = "envelope"
+                            type = 'font-awesome'
+                            size = {20}
+                            color = {"#fff"}
+                            style = {{paddingTop: 13}}
+                        />
+                        <View style = {styles.singleInput}>
+                            <TextInput
+                                placeholder='Email'
+                                textContentType='emailAddress'
+                                autoCapitalize={'none'}
+                                placeholderTextColor={"#EFCDC6"}
+                                style = {styles.tInput}
+                            />
+                        </View>
+                    </View>
+                    <View style = {styles.line}></View>
+                    <View style = {[styles.inputsView, {marginTop: 10}]}>
+                        <Icon
+                            name = "phone"
+                            type = 'font-awesome'
+                            size = {25}
+                            color = {"#fff"}
+                            style = {{paddingTop: 10}}
+                        />
+                        <View style = {styles.singleInput}>
+                            <TextInput
+                                placeholder='Phone'
+                                keyboardType='numeric'
+                                placeholderTextColor={"#EFCDC6"}
+                                style = {styles.tInput}
+                            />
+                        </View>
+                    </View>
+                    <View style = {styles.line}></View>
+                    <View style = {[styles.inputsView, {marginTop: 10}]}>
+                        <Icon
+                            name = "key"
+                            type = 'font-awesome'
+                            size = {25}
+                            color = {"#fff"}
+                            style = {{paddingTop: 10}}
+                        />
+                        <View style = {styles.singleInput}>
+                            <TextInput
+                                placeholder='Password'
+                                secureTextEntry = {registerPassword}
+                                textContentType='password'
+                                placeholderTextColor={"#EFCDC6"}
+                                style = {styles.tInput}
+                            />
+                        </View>
+                        <TouchableOpacity
+                            style = {{position: "absolute", right: 0}}
+                            onPress={() => {setRegisterPassword(!registerPassword)}}
+                        >
+                            <Icon
+                                name = 'eye'
+                                type = "font-awesome"
+                                size = {25}
+                                color = {'#fff'}
+                                style = {{paddingTop: 10}}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                    <View style = {styles.line}></View>
+                </View>
+                <View style = {styles.buttonView}>
+                    <TouchableOpacity
+                        style = {styles.button}
+                        onPress={() => {console.log("Register button pressed")}}
+                    >
+                        <Text style = {styles.buttonText}>
+                            Register
+                        </Text>
+                    </TouchableOpacity>
+                </View>
+                <View style = {styles.otherRegistration}>
+                    <View style = {styles.otherRegView}>
+                        <Text style = {styles.otherRegText}>
+                            Or Register With
+                        </Text>
+                    </View>
+                    <View style = {styles.regBubbles}>
+                    <TouchableOpacity
+                            style = {styles.bubble}
+                            onPress={() => console.log("Registering with google")}
+                        >
+                            <Icon
+                                name = 'google'
+                                type = 'font-awesome'
+                                size = {25}
+                                color = {"#F16529"}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style = {styles.bubble}
+                            onPress={() => console.log("Registering with facebook")}
+                        >
+                            <Icon
+                                name = 'facebook'
+                                type = 'font-awesome'
+                                size = {25}
+                                color = {"#F16529"}
+                            />
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style = {styles.bubble}
+                            onPress={() => console.log("Registering with apple")}
+                        >
+                            <Icon
+                                name = 'apple'
+                                type = 'font-awesome'
+                                size = {25}
+                                color = {"#F16529"}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                </View>
+            </View>
+        );
+    }
+
     return(
         <LinearGradient
             colors={["#E54E26","#EF6129"]}
@@ -144,7 +300,7 @@ export default function Main(){
                 <View style = {styles.allContainer}>
                     <View style = {styles.welcomeText}>
                         <Text style = {styles.wbText}>
-                            Welcome Back
+                            {activeTab === "Login"? "Welcome Back":"Register Now"}
                         </Text>
                     </View>
                     <View style = {styles.containerAllInputs}>
@@ -177,7 +333,7 @@ export default function Main(){
                             </TouchableOpacity>
                         </View>
                     </View>
-                    <Login/>
+                    {activeTab === "Login"? <Login/> : <Register/> }
                 </View>
                 <StatusBar
                     backgroundColor="transparent"
@@ -229,7 +385,7 @@ const styles = StyleSheet.create({
         marginRight: 20,
         marginLeft: 15
     },
-    twoInputs: {
+    inputsContainer: {
         marginTop: 20,
         marginHorizontal: 18
     },
@@ -238,20 +394,22 @@ const styles = StyleSheet.create({
         paddingLeft: 2,
     },
     tInput: {
-        paddingLeft: 10,
         paddingVertical: 10,
         fontSize: 20,
         color: "#fff"
+    },
+    singleInput: {
+        marginLeft: 13
     },
     line: {
         height: 1,
         width: "100%",
         backgroundColor: "#fff"
     },
-    loginButtonView: {
+    buttonView: {
         marginTop: 13,
     },
-    loginButton: {
+    button: {
         backgroundColor: "#FAFAFA",
         marginHorizontal: 18,
         paddingVertical: 14,
@@ -265,9 +423,9 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         elevation: 20
     },
-    loginButtonText: {
+    buttonText: {
         fontSize: 20,
-        fontWeight: "600",
+        fontWeight: "700",
         color: "#E65731"
     },
     forgotPassView: {
@@ -281,7 +439,7 @@ const styles = StyleSheet.create({
         color: "#fff"
     },
     bubbles: {
-        marginTop: 50,
+        marginTop: 32,
         flexDirection: "row",
         justifyContent: "space-between",
         marginHorizontal: 102
@@ -292,5 +450,22 @@ const styles = StyleSheet.create({
         borderRadius: 1000,
         backgroundColor: "#fff",
         justifyContent: "center"
+    },
+    otherRegistration: {
+        marginTop: 40,
+        marginLeft: 15
+    },
+    otherRegView: {
+        marginBottom: 17
+    },  
+    otherRegText: {
+        fontSize: 20,
+        fontWeight: "bold",
+        color: "#fff"
+    },
+    regBubbles: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginRight: 190
     }
   });
